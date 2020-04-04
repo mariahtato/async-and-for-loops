@@ -6,7 +6,6 @@ var url = ['http://names.drycodes.com/', 'http://numbersapi.com/', 'https://hips
 // Set parameters
 var parameters = ['1?separator=spaces', '2/math', '?type=hipster-centric&sentences=1', '1?separator=spaces', '5/math' ]
 
-
 function apiCall(url, param) {
   // Return the response of the api call with provided parameters
   return axios(`${url}${param}`)
@@ -22,15 +21,9 @@ async function iterateApi() {
     // Add response data to apiResults
     apiResults.push(i + ' | ' + response.data)
   }
-  // When finished iterating, return apiResults
-  return apiResults;
+  // When finished iterating, log results in correct order
+  console.log(apiResults)
 }
 
-// Declare function that calls on the for loop and will log the results once the loop is finished
-async function getResults() {
-  let allApiResults = await iterateApi();
-  // Once iterateApi returns a resolved promise, log its return value.
-  console.log(allApiResults)
-}
 
-getResults();
+iterateApi();
